@@ -10,6 +10,6 @@ public class RenateTest {
 		assertThat(1).isEqualTo(2);
 
 		System.out.println("Ein Text");
-
+ 
 	}
 }
