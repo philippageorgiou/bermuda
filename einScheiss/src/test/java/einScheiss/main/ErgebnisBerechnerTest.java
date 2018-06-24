@@ -14,4 +14,9 @@ public class ErgebnisBerechnerTest {
 		ErgebnisBerechner ergebnisBerechner = new ErgebnisBerechner(modelle.get(0));
 		Ergebnis ergebnis = ergebnisBerechner.berechne();
 	}
+
+	@Test
+	public void testBerechne() throws Exception {
+		throw new RuntimeException("not yet implemented");
+	}
 }
