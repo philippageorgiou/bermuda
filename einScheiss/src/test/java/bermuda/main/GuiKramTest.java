@@ -1,5 +1,6 @@
 package bermuda.main;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.panayotis.gnuplot.JavaPlot;
@@ -13,6 +14,7 @@ import com.panayotis.gnuplot.utils.Debug;
 
 public class GuiKramTest {
 	@Test
+	@Ignore
 	public void minimalBeispiel() throws Exception {
 		JavaPlot p = new JavaPlot();
 		p.addPlot("sin(x)");
@@ -20,6 +22,7 @@ public class GuiKramTest {
 	}
 
 	@Test
+	@Ignore
 	public void javaPlot3DTest() throws Exception {
 		JavaPlot p = new JavaPlot();
 		JavaPlot.getDebugger().setLevel(Debug.VERBOSE);
@@ -61,6 +64,7 @@ public class GuiKramTest {
 	}
 
 	@Test
+	@Ignore
 	public void new3DPlot() throws Exception {
 		JavaPlot p = new JavaPlot();
 		p.newGraph3D();
