@@ -60,4 +60,12 @@ public class GuiKramTest {
 
 	}
 
+	@Test
+	public void new3DPlot() throws Exception {
+		JavaPlot p = new JavaPlot();
+		p.newGraph3D();
+		double[][] plot3d = { { 1, 1.1, 3 }, { 2, 2.2, 3 }, { 3, 3.3, 3.4 }, { 4, 4.3, 5 } };
+		p.addPlot(plot3d);
+		p.plot();
+	}
 }
