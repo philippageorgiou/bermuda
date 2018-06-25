@@ -12,6 +12,9 @@ public class ParameterModel {
 		this.countSimulation = countSimulation;
 	}
 
+	public ParameterModel() {
+	}
+
 	public double getStartShortrate() {
 		return startShortrate;
 	}
@@ -71,7 +74,6 @@ public class ParameterModel {
 	public ParameterModel(int countSimulation, double startShortrate, double meanShortrate,
 			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
 			double couponRateCallableBond, double faceValueCallableBond) {
-		super();
 		this.countSimulation = countSimulation;
 		this.startShortrate = startShortrate;
 		this.meanShortrate = meanShortrate;
@@ -108,6 +110,15 @@ public class ParameterModel {
 
 	public static ParameterModel aModel() {
 		return new ParameterModel(1, 2, 3, 4, 5, 6, 7, 8);
+	}
+
+	@Override
+	public String toString() {
+		return "ParameterModel [countSimulation=" + countSimulation + ", startShortrate=" + startShortrate
+				+ ", meanShortrate=" + meanShortrate + ", reversionSpeedShortrate=" + reversionSpeedShortrate
+				+ ", volatilityShortrate=" + volatilityShortrate + ", durationCallableBond=" + durationCallableBond
+				+ ", couponRateCallableBond=" + couponRateCallableBond + ", faceValueCallableBond="
+				+ faceValueCallableBond + "]";
 	}
 
 }
