@@ -3,6 +3,7 @@ package bermuda.main;
 import com.opencsv.bean.CsvBindByName;
 
 public class ParameterModel {
+
 	public int getCountSimulation() {
 		return countSimulation;
 	}
@@ -104,5 +105,9 @@ public class ParameterModel {
 
 	@CsvBindByName(column = "FACE_VALUE_CALLABLE_BOND")
 	private double faceValueCallableBond;
+
+	public static ParameterModel aModel() {
+		return new ParameterModel(1, 2, 3, 4, 5, 6, 7, 8);
+	}
 
 }
