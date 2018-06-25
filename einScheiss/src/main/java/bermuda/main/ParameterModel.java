@@ -81,28 +81,28 @@ public class ParameterModel {
 		this.faceValueCallableBond = faceValueCallableBond;
 	}
 
-	@CsvBindByName(column = "Count_Simulation")
+	@CsvBindByName(column = "COUNT_SIMULATION")
 	private int countSimulation;
 
-	@CsvBindByName(column = "Start_Shortrate")
+	@CsvBindByName(column = "START_SHORTRATE")
 	private double startShortrate;
 
-	@CsvBindByName(column = "Mean_Shortrate")
+	@CsvBindByName(column = "MEAN_SHORTRATE")
 	private double meanShortrate;
 
-	@CsvBindByName(column = "Reversion_Speed_Shortrate")
+	@CsvBindByName(column = "REVERSION_SPEED_SHORTRATE")
 	private double reversionSpeedShortrate;
 
-	@CsvBindByName(column = "Volatility_Shortrate")
+	@CsvBindByName(column = "VOLATILITY_SHORTRATE")
 	private double volatilityShortrate;
 
-	@CsvBindByName(column = "Duration_Callable_Bond")
+	@CsvBindByName(column = "DURATION_CALLABLE_BOND")
 	private int durationCallableBond;
 
-	@CsvBindByName(column = "Coupon_Rate_Callable_Bond")
+	@CsvBindByName(column = "COUPON_RATE_CALLABLE_BOND")
 	private double couponRateCallableBond;
 
-	@CsvBindByName(column = "Face_Value_Callable_Bond")
+	@CsvBindByName(column = "FACE_VALUE_CALLABLE_BOND")
 	private double faceValueCallableBond;
 
 }
