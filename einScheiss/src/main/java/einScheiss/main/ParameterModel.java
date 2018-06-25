@@ -3,49 +3,106 @@ package einScheiss.main;
 import com.opencsv.bean.CsvBindByName;
 
 public class ParameterModel {
-	@CsvBindByName(column = "erster Parameter")
-	private double ersterParameter;
-
-	public ParameterModel(double ersterParameter, double zweiterParameter, double dritterParameter) {
-		this.ersterParameter = ersterParameter;
-		this.zweiterParameter = zweiterParameter;
-		this.dritterParameter = dritterParameter;
+	public int getCountSimulation() {
+		return countSimulation;
 	}
 
-	@CsvBindByName(column = "zweiter Parameter")
-	private double zweiterParameter;
-
-	@CsvBindByName(column = "dritter Parameter")
-	private double dritterParameter;
-
-	@Override
-	public String toString() {
-		return "ParameterModel [ersterParameter=" + ersterParameter + ", zweiterParameter=" + zweiterParameter
-				+ ", dritterParameter=" + dritterParameter + "]";
+	public void setCountSimulation(int countSimulation) {
+		this.countSimulation = countSimulation;
 	}
 
-	public double getErsterParameter() {
-		return ersterParameter;
+	public double getStartShortrate() {
+		return startShortrate;
 	}
 
-	public void setErsterParameter(double ersterParameter) {
-		this.ersterParameter = ersterParameter;
+	public void setStartShortrate(double startShortrate) {
+		this.startShortrate = startShortrate;
 	}
 
-	public double getZweiterParameter() {
-		return zweiterParameter;
+	public double getMeanShortrate() {
+		return meanShortrate;
 	}
 
-	public void setZweiterParameter(double zweiterParameter) {
-		this.zweiterParameter = zweiterParameter;
+	public void setMeanShortrate(double meanShortrate) {
+		this.meanShortrate = meanShortrate;
 	}
 
-	public double getDritterParameter() {
-		return dritterParameter;
+	public double getReversionSpeedShortrate() {
+		return reversionSpeedShortrate;
 	}
 
-	public void setDritterParameter(double dritterParameter) {
-		this.dritterParameter = dritterParameter;
+	public void setReversionSpeedShortrate(double reversionSpeedShortrate) {
+		this.reversionSpeedShortrate = reversionSpeedShortrate;
 	}
+
+	public double getVolatilityShortrate() {
+		return volatilityShortrate;
+	}
+
+	public void setVolatilityShortrate(double volatilityShortrate) {
+		this.volatilityShortrate = volatilityShortrate;
+	}
+
+	public int getDurationCallableBond() {
+		return durationCallableBond;
+	}
+
+	public void setDurationCallableBond(int durationCallableBond) {
+		this.durationCallableBond = durationCallableBond;
+	}
+
+	public double getCouponRateCallableBond() {
+		return couponRateCallableBond;
+	}
+
+	public void setCouponRateCallableBond(double couponRateCallableBond) {
+		this.couponRateCallableBond = couponRateCallableBond;
+	}
+
+	public double getFaceValueCallableBond() {
+		return faceValueCallableBond;
+	}
+
+	public void setFaceValueCallableBond(double faceValueCallableBond) {
+		this.faceValueCallableBond = faceValueCallableBond;
+	}
+
+	public ParameterModel(int countSimulation, double startShortrate, double meanShortrate,
+			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
+			double couponRateCallableBond, double faceValueCallableBond) {
+		super();
+		this.countSimulation = countSimulation;
+		this.startShortrate = startShortrate;
+		this.meanShortrate = meanShortrate;
+		this.reversionSpeedShortrate = reversionSpeedShortrate;
+		this.volatilityShortrate = volatilityShortrate;
+		this.durationCallableBond = durationCallableBond;
+		this.couponRateCallableBond = couponRateCallableBond;
+		this.faceValueCallableBond = faceValueCallableBond;
+	}
+
+	@CsvBindByName(column = "Count_Simulation")
+	private int countSimulation;
+
+	@CsvBindByName(column = "Start_Shortrate")
+	private double startShortrate;
+
+	@CsvBindByName(column = "Mean_Shortrate")
+	private double meanShortrate;
+
+	@CsvBindByName(column = "Reversion_Speed_Shortrate")
+	private double reversionSpeedShortrate;
+
+	@CsvBindByName(column = "Volatility_Shortrate")
+	private double volatilityShortrate;
+
+	@CsvBindByName(column = "Duration_Callable_Bond")
+	private int durationCallableBond;
+
+	@CsvBindByName(column = "Coupon_Rate_Callable_Bond")
+	private double couponRateCallableBond;
+
+	@CsvBindByName(column = "Face_Value_Callable_Bond")
+	private double faceValueCallableBond;
 
 }
