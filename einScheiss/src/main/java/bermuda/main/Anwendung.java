@@ -1,4 +1,4 @@
-package einScheiss.main;
+package bermuda.main;
 
 import java.io.FileNotFoundException;
 import java.util.List;

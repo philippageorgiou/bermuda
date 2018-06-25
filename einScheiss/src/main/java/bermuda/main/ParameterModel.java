@@ -1,4 +1,4 @@
-package einScheiss.main;
+package bermuda.main;
 
 import com.opencsv.bean.CsvBindByName;
 

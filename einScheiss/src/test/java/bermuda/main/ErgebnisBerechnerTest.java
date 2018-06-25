@@ -1,8 +1,13 @@
-package einScheiss.main;
+package bermuda.main;
 
 import java.util.List;
 
 import org.junit.Test;
+
+import bermuda.main.CsvEinleser;
+import bermuda.main.Ergebnis;
+import bermuda.main.ErgebnisBerechner;
+import bermuda.main.ParameterModel;
 
 public class ErgebnisBerechnerTest {
 	@Test

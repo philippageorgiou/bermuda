@@ -1,6 +1,10 @@
-package einScheiss.main;
+package bermuda.main;
 
 import org.junit.Test;
+
+import bermuda.main.CsvWriter;
+import bermuda.main.Ergebnis;
+import bermuda.main.ParameterModel;
 
 public class CsvWriterTest {
 	@Test

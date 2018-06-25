@@ -1,4 +1,4 @@
-package einScheiss.main;
+package bermuda.main;
 
 import org.junit.Test;
 

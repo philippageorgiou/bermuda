@@ -1,4 +1,4 @@
-package einScheiss.main;
+package bermuda.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

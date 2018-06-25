@@ -1,4 +1,4 @@
-package einScheiss.main;
+package bermuda.main;
 
 import java.io.IOException;
 import java.io.Writer;

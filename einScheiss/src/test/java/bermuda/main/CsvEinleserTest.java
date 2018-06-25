@@ -1,10 +1,13 @@
-package einScheiss.main;
+package bermuda.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
 import org.junit.Test;
+
+import bermuda.main.CsvEinleser;
+import bermuda.main.ParameterModel;
 
 public class CsvEinleserTest {
 
