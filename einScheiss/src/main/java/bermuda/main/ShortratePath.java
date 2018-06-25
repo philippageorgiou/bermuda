@@ -9,6 +9,7 @@ public class ShortratePath {
 
 	public ShortratePath(ParameterModel aModel, GaussianRandomGenerator generator) {
 		this.aModel = aModel;
+
 		double[] r = new double[aModel.getDurationCallableBond() + 1];
 		r[0] = aModel.getStartShortrate();
 		for (int j = 1; j <= aModel.getDurationCallableBond(); j++) {
