@@ -15,12 +15,12 @@ public class InterestAllPaths {
 		this.generator = generator;
 	}
 
-	public InterestPath generatePath() {
-		return new ShortratePath(aModel, generator);
+	public InterestRatePath generatePath() {
+		return new InterestRatePath(new ShortratePath(aModel, generator));
 	}
 
-	public List<ShortratePath> generateAllPaths() {
-		List<ShortratePath> list = new ArrayList<>();
+	public List<InterestRatePath> generateAllPaths() {
+		List<InterestRatePath> list = new ArrayList<>();
 		for (int i = 0; i < aModel.getCountSimulation(); i++) {
 			list.add(generatePath());
 		}

@@ -12,9 +12,6 @@ public class ParameterModel {
 		this.countSimulation = countSimulation;
 	}
 
-	public ParameterModel() {
-	}
-
 	public double getStartShortrate() {
 		return startShortrate;
 	}
@@ -73,7 +70,7 @@ public class ParameterModel {
 
 	public ParameterModel(int countSimulation, double startShortrate, double meanShortrate,
 			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
-			double couponRateCallableBond, double faceValueCallableBond) {
+			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale) {
 		this.countSimulation = countSimulation;
 		this.startShortrate = startShortrate;
 		this.meanShortrate = meanShortrate;
@@ -82,6 +79,7 @@ public class ParameterModel {
 		this.durationCallableBond = durationCallableBond;
 		this.couponRateCallableBond = couponRateCallableBond;
 		this.faceValueCallableBond = faceValueCallableBond;
+		this.interestToShortrateScale = interestToShortrateScale;
 	}
 
 	@CsvBindByName(column = "COUNT_SIMULATION")
@@ -108,8 +106,11 @@ public class ParameterModel {
 	@CsvBindByName(column = "FACE_VALUE_CALLABLE_BOND")
 	private double faceValueCallableBond;
 
+	@CsvBindByName(column = "INTEREST_TO_SHORTRATE_SCALE")
+	private int interestToShortrateScale;
+
 	public static ParameterModel aModel() {
-		return new ParameterModel(1, 2, 3, 4, 5, 6, 7, 8);
+		return new ParameterModel(100, 0.9, 0.05, 0.003, 0.003, 10, 7, 8, 365);
 	}
 
 	@Override
@@ -118,7 +119,15 @@ public class ParameterModel {
 				+ ", meanShortrate=" + meanShortrate + ", reversionSpeedShortrate=" + reversionSpeedShortrate
 				+ ", volatilityShortrate=" + volatilityShortrate + ", durationCallableBond=" + durationCallableBond
 				+ ", couponRateCallableBond=" + couponRateCallableBond + ", faceValueCallableBond="
-				+ faceValueCallableBond + "]";
+				+ faceValueCallableBond + ", interestToShortrateScale=" + interestToShortrateScale + "]";
+	}
+
+	public int getInterestToShortrateScale() {
+		return interestToShortrateScale;
+	}
+
+	public void setInterestToShortrateScale(int interestToShortrateScale) {
+		this.interestToShortrateScale = interestToShortrateScale;
 	}
 
 }

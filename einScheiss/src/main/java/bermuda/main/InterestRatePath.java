@@ -6,15 +6,16 @@ public class InterestRatePath {
 
 	public InterestRatePath(ShortratePath shortratePath) {
 		double[] shortrateValues = shortratePath.getValues();
-		double[] y = new double[shortrateValues.length];
+		int yearCount = shortrateValues.length / shortratePath.getScale();
+		double[] y = new double[yearCount];
 		y[0] = 0;
-		for (int j = 0; j < shortrateValues.length; j++) {
-			for (int k = 1; k < j; k++) {
+		for (int j = 0; j < yearCount; j++) {
+			int upperBound = j * shortratePath.getScale();
+			for (int k = 1; k < upperBound; k++) {
 				y[j] += shortrateValues[k];
-
 			}
-			y[j] += (shortrateValues[0] + shortrateValues[j]) / 2;
-			y[j] *= 1 / (j + 1);
+			y[j] += (shortrateValues[0] + shortrateValues[upperBound]) / 2;
+			y[j] /= (upperBound + 1);
 			y[j] = Math.pow(y[j], j) - 1;
 		}
 		values = y;
