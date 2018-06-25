@@ -74,4 +74,9 @@ public class GuiKramTest {
 		p.plot();
 
 	}
+
+	@Test
+	public void normalDistribution() throws Exception {
+
+	}
 }
