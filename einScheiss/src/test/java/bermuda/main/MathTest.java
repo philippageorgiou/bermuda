@@ -62,6 +62,7 @@ public class MathTest {
 
 		RealMatrix covariance = new Array2DRowRealMatrix(new double[][] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } },
 				false);
+
 		CorrelatedRandomVectorGenerator generator = new CorrelatedRandomVectorGenerator(MEAN_VECTOR, covariance,
 				1.0e-12 * covariance.getNorm(), rawGenerator);
 
