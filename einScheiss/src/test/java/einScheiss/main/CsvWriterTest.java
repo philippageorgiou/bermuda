@@ -5,7 +5,10 @@ import org.junit.Test;
 public class CsvWriterTest {
 	@Test
 	public void writeToCsv() throws Exception {
-		CsvWriter csvWriter = new CsvWriter("\\src\\test\\resources\\einScheiss\\main\\ergebnisse.csv");
+		// hiermit lässt sich irgendwie die Reihenfolge setzen
+		// HeaderColumnNameMappingStrategy<ParameterModel>
+		// headerColumnNameMappingStrategy = new HeaderColumnNameMappingStrategy();
+		CsvWriter csvWriter = new CsvWriter("ergebnisse.csv");
 		csvWriter.write(new Ergebnis(new ParameterModel(1, 2, 3)));
 	}
 }

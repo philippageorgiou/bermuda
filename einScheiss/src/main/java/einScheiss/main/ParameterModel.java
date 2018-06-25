@@ -24,4 +24,28 @@ public class ParameterModel {
 				+ ", dritterParameter=" + dritterParameter + "]";
 	}
 
+	public double getErsterParameter() {
+		return ersterParameter;
+	}
+
+	public void setErsterParameter(double ersterParameter) {
+		this.ersterParameter = ersterParameter;
+	}
+
+	public double getZweiterParameter() {
+		return zweiterParameter;
+	}
+
+	public void setZweiterParameter(double zweiterParameter) {
+		this.zweiterParameter = zweiterParameter;
+	}
+
+	public double getDritterParameter() {
+		return dritterParameter;
+	}
+
+	public void setDritterParameter(double dritterParameter) {
+		this.dritterParameter = dritterParameter;
+	}
+
 }
