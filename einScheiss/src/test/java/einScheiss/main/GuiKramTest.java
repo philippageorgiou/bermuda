@@ -1,41 +1,77 @@
 package einScheiss.main;
 
 import org.junit.Test;
-import org.jzy3d.chart.AWTChart;
-import org.jzy3d.chart.Chart;
-import org.jzy3d.colors.Color;
-import org.jzy3d.maths.Range;
-import org.jzy3d.plot3d.builder.Builder;
-import org.jzy3d.plot3d.builder.Mapper;
-import org.jzy3d.plot3d.builder.concrete.OrthonormalGrid;
-import org.jzy3d.plot3d.primitives.Shape;
-import org.jzy3d.plot3d.rendering.canvas.Quality;
+
+import com.panayotis.gnuplot.GNUPlot;
+import com.panayotis.gnuplot.JavaPlot;
+import com.panayotis.gnuplot.layout.StripeLayout;
+import com.panayotis.gnuplot.plot.AbstractPlot;
+import com.panayotis.gnuplot.plot.DataSetPlot;
+import com.panayotis.gnuplot.plot.Graph3D;
+import com.panayotis.gnuplot.style.NamedPlotColor;
+import com.panayotis.gnuplot.style.PlotStyle;
+import com.panayotis.gnuplot.style.Style;
+import com.panayotis.gnuplot.utils.Debug;
 
 public class GuiKramTest {
 	@Test
+	public void minimalBeispiel() throws Exception {
+		JavaPlot p = new JavaPlot();
+
+		p.addPlot("sin(x)");
+
+		p.plot();
+	}
+
+	@Test
 	public void testName() throws Exception {
-		// Define a function to plot
-		Mapper mapper = new Mapper() {
-			public double f(double x, double y) {
-				return 10 * Math.sin(x / 10) * Math.cos(y / 20);
-			}
-		};
+		float[][] data = { { 1, 2 }, { 2, 3 } };
+		GNUPlot gnuPlot = new GNUPlot(true);
+		Graph3D graph3d = new Graph3D();
+		graph3d.addPlot(new DataSetPlot(data));
+		gnuPlot.addGraph(graph3d);
+		gnuPlot.plot();
+		System.out.println("");
+	}
 
-		// Define range and precision for the function to plot
-		Range range = new Range(-150, 150);
-		int steps = 50;
+	@Test
+	public void javaPlotTest() throws Exception {
+		JavaPlot p = new JavaPlot();
+		JavaPlot.getDebugger().setLevel(Debug.VERBOSE);
 
-		// Create a surface drawing that function
-		Shape surface = Builder.buildOrthonormal(new OrthonormalGrid(range, steps), mapper);
-		// surface.setColorMapper(new ColorMapper(new ColorMapRainbow(),
-		// surface.getBounds()));
-		surface.setFaceDisplayed(true);
-		surface.setWireframeDisplayed(false);
-		surface.setWireframeColor(Color.BLACK);
+		p.setTitle("Default \"Terminal Title\"");
+		p.getAxis("x").setLabel("X axis", "Arial", 20);
+		p.getAxis("y").setLabel("Y axis");
 
-		// Create a chart and add the surface
-		Chart chart = new AWTChart(Quality.Advanced);
-		chart.add(surface);
-		chart.open("Jzy3d Demo", 600, 600);
+		p.getAxis("x").setBoundaries(-30, 20);
+		p.setKey(JavaPlot.Key.TOP_RIGHT);
+
+		double[][] plot = { { 1, 1.1 }, { 2, 2.2 }, { 3, 3.3 }, { 4, 4.3 } };
+		DataSetPlot s = new DataSetPlot(plot);
+		p.addPlot(s);
+		p.addPlot("besj0(x)*0.12e1");
+		PlotStyle stl = ((AbstractPlot) p.getPlots().get(1)).getPlotStyle();
+		stl.setStyle(Style.POINTS);
+		stl.setLineType(NamedPlotColor.GOLDENROD);
+		stl.setPointType(5);
+		stl.setPointSize(8);
+		p.addPlot("sin(x)");
+
+		p.newGraph();
+		p.addPlot("sin(x)");
+
+		p.newGraph3D();
+		double[][] plot3d = { { 1, 1.1, 3 }, { 2, 2.2, 3 }, { 3, 3.3, 3.4 }, { 4, 4.3, 5 } };
+		p.addPlot(plot3d);
+
+		p.newGraph3D();
+		p.addPlot("sin(x)*sin(y)");
+
+		p.setMultiTitle("Global test title");
+		StripeLayout lo = new StripeLayout();
+		lo.setColumns(9999);
+		p.getPage().setLayout(lo);
+		p.plot();
+
 	}
 }
