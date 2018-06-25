@@ -8,17 +8,10 @@ public class ErgebnisBerechnerTest {
 	@Test
 	public void berechneDieDreiZahlen() throws Exception {
 		CsvEinleser csvEinleser = new CsvEinleser();
-		List<ParameterModel> modelle = csvEinleser.leseParameter(
-				"C:\\Users\\Pieed\\eclipse-spielereien\\einScheiss\\src\\test\\resources\\einScheiss\\main\\testdatei.csv");
+		List<ParameterModel> modelle = csvEinleser.leseParameter("testdatei.csv");
 
 		ErgebnisBerechner ergebnisBerechner = new ErgebnisBerechner(modelle.get(0));
 		Ergebnis ergebnis = ergebnisBerechner.berechne();
-	}
-
-
-	@Test
-	public void testBerechne() throws Exception {
-		throw new RuntimeException("not yet implemented");
 	}
 
 }

@@ -2,12 +2,10 @@ package einScheiss.main;
 
 import org.junit.Test;
 
-import com.panayotis.gnuplot.GNUPlot;
 import com.panayotis.gnuplot.JavaPlot;
 import com.panayotis.gnuplot.layout.StripeLayout;
 import com.panayotis.gnuplot.plot.AbstractPlot;
 import com.panayotis.gnuplot.plot.DataSetPlot;
-import com.panayotis.gnuplot.plot.Graph3D;
 import com.panayotis.gnuplot.style.NamedPlotColor;
 import com.panayotis.gnuplot.style.PlotStyle;
 import com.panayotis.gnuplot.style.Style;
@@ -17,25 +15,12 @@ public class GuiKramTest {
 	@Test
 	public void minimalBeispiel() throws Exception {
 		JavaPlot p = new JavaPlot();
-
 		p.addPlot("sin(x)");
-
 		p.plot();
 	}
 
 	@Test
-	public void testName() throws Exception {
-		float[][] data = { { 1, 2 }, { 2, 3 } };
-		GNUPlot gnuPlot = new GNUPlot(true);
-		Graph3D graph3d = new Graph3D();
-		graph3d.addPlot(new DataSetPlot(data));
-		gnuPlot.addGraph(graph3d);
-		gnuPlot.plot();
-		System.out.println("");
-	}
-
-	@Test
-	public void javaPlotTest() throws Exception {
+	public void javaPlot3DTest() throws Exception {
 		JavaPlot p = new JavaPlot();
 		JavaPlot.getDebugger().setLevel(Debug.VERBOSE);
 
@@ -75,8 +60,4 @@ public class GuiKramTest {
 
 	}
 
-	@Test
-	public void normalDistribution() throws Exception {
-
-	}
 }

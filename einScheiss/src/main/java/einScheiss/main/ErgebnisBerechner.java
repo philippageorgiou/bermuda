@@ -9,7 +9,7 @@ public class ErgebnisBerechner {
 	}
 
 	public Ergebnis berechne() {
-		return new Ergebnis();
+		return new Ergebnis(parameterModel);
 	}
 
 }

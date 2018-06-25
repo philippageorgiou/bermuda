@@ -6,6 +6,12 @@ public class ParameterModel {
 	@CsvBindByName(column = "erster Parameter")
 	private double ersterParameter;
 
+	public ParameterModel(double ersterParameter, double zweiterParameter, double dritterParameter) {
+		this.ersterParameter = ersterParameter;
+		this.zweiterParameter = zweiterParameter;
+		this.dritterParameter = dritterParameter;
+	}
+
 	@CsvBindByName(column = "zweiter Parameter")
 	private double zweiterParameter;
 
