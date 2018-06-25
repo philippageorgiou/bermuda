@@ -9,7 +9,6 @@ public class CashflowPath {
 		this.aModel = aModel;
 		double[] c = new double[aModel.getDurationCallableBond()];
 		for (int j = 0; j < c.length; j++) {
-
 			if (j != c.length && zeitwertBond(interestRate) > aModel.getFaceValueCallableBond()) {
 
 			}

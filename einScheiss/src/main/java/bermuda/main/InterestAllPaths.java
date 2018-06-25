@@ -5,17 +5,17 @@ import java.util.List;
 
 import org.apache.commons.math3.random.GaussianRandomGenerator;
 
-public class ShortrateAllPaths {
+public class InterestAllPaths {
 
 	private ParameterModel aModel;
 	private GaussianRandomGenerator generator;
 
-	public ShortrateAllPaths(ParameterModel aModel, GaussianRandomGenerator generator) {
+	public InterestAllPaths(ParameterModel aModel, GaussianRandomGenerator generator) {
 		this.aModel = aModel;
 		this.generator = generator;
 	}
 
-	public ShortratePath generatePath() {
+	public InterestPath generatePath() {
 		return new ShortratePath(aModel, generator);
 	}
 

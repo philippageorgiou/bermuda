@@ -11,7 +11,7 @@ import org.apache.commons.math3.random.RandomGeneratorFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ShortrateAllPathsTest {
+public class InterestAllPathsTest {
 
 	private static final long SEED = 0;
 	private GaussianRandomGenerator generator;
@@ -25,7 +25,7 @@ public class ShortrateAllPathsTest {
 	@Test
 	public void getValues() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
-		ShortrateAllPaths shortrateVasicek = new ShortrateAllPaths(aModel, generator);
+		InterestAllPaths shortrateVasicek = new InterestAllPaths(aModel, generator);
 		ShortratePath path = shortrateVasicek.generatePath();
 		double[] values = path.getValues();
 		assertThat(values).hasSize(aModel.getDurationCallableBond() + 1);
@@ -35,7 +35,7 @@ public class ShortrateAllPathsTest {
 	@Test
 	public void generateAllPaths() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
-		ShortrateAllPaths shortrateVasicek = new ShortrateAllPaths(aModel, generator);
+		InterestAllPaths shortrateVasicek = new InterestAllPaths(aModel, generator);
 		List<ShortratePath> paths = shortrateVasicek.generateAllPaths();
 		assertThat(paths).hasSize(aModel.getCountSimulation());
 		assertThat(paths.get(0).getValues()).isEqualTo(new double[] { aModel.getStartShortrate(), 22.012665318695152,
