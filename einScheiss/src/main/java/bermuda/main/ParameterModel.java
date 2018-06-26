@@ -2,6 +2,8 @@ package bermuda.main;
 
 import com.opencsv.bean.CsvBindByName;
 
+import net.karneim.pojobuilder.GeneratePojoBuilder;
+
 public class ParameterModel {
 
 	public int getCountSimulation() {
@@ -68,6 +70,7 @@ public class ParameterModel {
 		this.faceValueCallableBond = faceValueCallableBond;
 	}
 
+	@GeneratePojoBuilder(withFactoryMethod = "aModel")
 	public ParameterModel(int countSimulation, double startShortrate, double meanShortrate,
 			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
 			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale) {

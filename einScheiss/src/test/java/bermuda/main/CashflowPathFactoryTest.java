@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CashflowPathFactoryTest {
-	private static final long SEED = 0;
+	private static final long SEED = 10;
 	private GaussianRandomGenerator generator;
 
 	@Before
