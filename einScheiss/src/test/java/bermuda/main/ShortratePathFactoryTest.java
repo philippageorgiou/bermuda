@@ -22,7 +22,7 @@ public class ShortratePathFactoryTest {
 		generator = new GaussianRandomGenerator(randomGenerator);
 	}
 
-	private List<ShortratePath> {
+	private List<ShortratePath> generatePaths() {
 		ShortratePathFactory shortrateVasicek = new ShortratePathFactory(aModel, generator);
 		List<ShortratePath> paths = shortrateVasicek.generateAllPaths();
 		return paths;
@@ -30,8 +30,7 @@ public class ShortratePathFactoryTest {
 
 	@Test
 	public void plotPaths() throws Exception {
-		ParameterModel aModel = ParameterModel.aModel();
-		List<ShortratePath> paths = generatePaths(aModel);
+		List<ShortratePath> paths = generatePaths();
 		PathPlotter.plotShortrate(paths);
 	}
 }
