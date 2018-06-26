@@ -25,6 +25,14 @@ public class ShortratePath implements ValuePath {
 		return values;
 	}
 
+	public String[] getValuesAsStrings() {
+		String[] val = new String[values.length];
+		for (int i = 0; i < val.length; i++) {
+			val[i] = "" + values[i];
+		}
+		return val;
+	}
+
 	public int getScale() {
 		return aModel.getInterestToShortrateScale();
 	}

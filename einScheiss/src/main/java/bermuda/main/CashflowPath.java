@@ -37,7 +37,9 @@ public class CashflowPath implements ValuePath {
 		return timeValueBond > aModel.getFaceValueCallableBond();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bermuda.main.ValuePath#getValues()
 	 */
 	@Override
@@ -45,4 +47,11 @@ public class CashflowPath implements ValuePath {
 		return values;
 	}
 
+	public String[] getValuesAsStrings() {
+		String[] val = new String[values.length];
+		for (int i = 0; i < val.length; i++) {
+			val[i] = "" + values[i];
+		}
+		return val;
+	}
 }
