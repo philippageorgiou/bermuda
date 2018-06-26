@@ -110,7 +110,7 @@ public class ParameterModel {
 	private int interestToShortrateScale;
 
 	public static ParameterModel aModel() {
-		return new ParameterModel(100, 0.009, 0.003, 0.003, 0.003, 10, 7, 8, 365);
+		return new ParameterModel(10, 0.009, 0.005, 0.003, 0.003, 10, 7, 8, 365);
 	}
 
 	@Override

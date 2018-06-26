@@ -1,21 +1,39 @@
 package bermuda.main;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class CashflowAllPaths {
 
-	public CashflowAllPaths(ParameterModel aModel, InterestRatePath interestRate) {
-		// TODO Auto-generated constructor stub
+	private ParameterModel aModel;
+	private List<InterestsPath> simulatedInterestPaths;
+	private InterestsPath interestsPath;
+	private int countPath;
+
+	public CashflowAllPaths(ParameterModel aModel, List<InterestsPath> simulatedInterestPaths) {
+		this.aModel = aModel;
+		this.simulatedInterestPaths = simulatedInterestPaths;
+		this.countPath = simulatedInterestPaths.size();
 	}
 
 	public CashflowPath generatePath() {
-		// TODO Auto-generated method stub
-		return null;
+		return new CashflowPath(aModel, interestsPath);
 	}
 
 	public static List<CashflowPath> generateAllPaths() {
-		// TODO Auto-generated method stub
-		return null;
+		double[] interests;
+		ListIterator<Integer> countPath  interestsAllPaths;
+		
+		List<CashflowPath> list = new ArrayList<>();
+		for (int i = 0; i < aModel.getCountSimulation; i++) {
+
+			for (int j = 0; j < array.length; j++) {
+
+			}
+		}
+
+		return list;
 	}
 
 }

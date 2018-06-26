@@ -1,10 +1,10 @@
 package bermuda.main;
 
-public class InterestRatePath {
+public class InterestsPath {
 
 	private double[] values;
 
-	public InterestRatePath(ShortratePath shortratePath) {
+	public InterestsPath(ShortratePath shortratePath) {
 		double[] shortrateValues = shortratePath.getValues();
 		int yearCount = shortrateValues.length / shortratePath.getScale();
 		double[] y = new double[yearCount + 1];

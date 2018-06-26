@@ -8,12 +8,12 @@ import org.junit.Test;
 
 public class CashflowAllPathsTest {
 
-	private InterestRatePath interestRate;
+	private InterestsAllPaths interestsAllPaths;
 
 	@Test
 	public void getValues() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
-		CashflowAllPaths cashflowAllPaths = new CashflowAllPaths(aModel, interestRate);
+		CashflowAllPaths cashflowAllPaths = new CashflowAllPaths(aModel, interestsAllPaths);
 		CashflowPath path = cashflowAllPaths.generatePath();
 		double[] values = path.getValues();
 		assertThat(values).hasSize(aModel.getDurationCallableBond() + 1);
@@ -23,7 +23,7 @@ public class CashflowAllPathsTest {
 	@Test
 	public void generateAllPaths() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
-		CashflowAllPaths cashflowAllPaths = new CashflowAllPaths(aModel, interestRate);
+		CashflowAllPaths cashflowAllPaths = new CashflowAllPaths(aModel, interestsAllPaths);
 		List<CashflowPath> paths = CashflowAllPaths.generateAllPaths();
 		assertThat(paths).hasSize(aModel.getCountSimulation());
 
