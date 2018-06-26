@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
@@ -25,12 +23,9 @@ public class CsvWriter {
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 
 		try (Writer writer = Files.newBufferedWriter(Paths.get(dateiname))) {
-			StatefulBeanToCsv<ParameterModel> beanToCsv = new StatefulBeanToCsvBuilder(writer)
+			StatefulBeanToCsv<Ergebnis> beanToCsv = new StatefulBeanToCsvBuilder(writer)
 					.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withOrderedResults(true).build();
-
-			List<ParameterModel> ergebnisse = new ArrayList<>();
-			// ergebnisse.add(ergebnis.getParameterModel());
-			beanToCsv.write(ergebnisse);
+			beanToCsv.write(ergebnis);
 		}
 
 	}

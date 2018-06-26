@@ -2,6 +2,7 @@ package bermuda.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -13,20 +14,26 @@ import org.junit.Test;
 
 public class InterestsPathFactoryTest {
 
-	private static final long SEED = 0;
+	private static final long SEED = 10;
 	private GaussianRandomGenerator generator;
+	private ParameterModel aModel;
+	private RandomGenerator randomGenerator;
+	private ArrayList<ShortratePath> shortratePaths;
 
 	@Before
 	public void setUp() {
-		RandomGenerator randomGenerator = RandomGeneratorFactory.createRandomGenerator(new Random(SEED));
+		randomGenerator = RandomGeneratorFactory.createRandomGenerator(new Random(SEED));
+		aModel = ParameterModel.aModel();
 		generator = new GaussianRandomGenerator(randomGenerator);
+		shortratePaths = new ShortratePathFactory(aModel, generator).generateAllPaths();
 	}
 
 	@Test
 	public void getValues() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
-		InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel, generator);
-		ValuePath path = shortrateVasicek.generatePath();
+		InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel, shortratePaths);
+
+		ValuePath path = shortrateVasicek.generateAllPaths().get(0);
 		double[] values = path.getValues();
 		assertThat(values).hasSize(aModel.getDurationCallableBond() + 1);
 		assertThat(values[0]).isEqualTo(aModel.getStartShortrate());
@@ -42,7 +49,7 @@ public class InterestsPathFactoryTest {
 	}
 
 	private List<InterestsPath> generatePaths(ParameterModel aModel) {
-		InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel, generator);
+		InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel, shortratePaths);
 		List<InterestsPath> paths = shortrateVasicek.generateAllPaths();
 		return paths;
 	}

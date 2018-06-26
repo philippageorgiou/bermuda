@@ -6,6 +6,9 @@ import net.karneim.pojobuilder.GeneratePojoBuilder;
 
 public class ParameterModel {
 
+	public ParameterModel() {
+	}
+
 	public int getCountSimulation() {
 		return countSimulation;
 	}

@@ -1,5 +1,7 @@
 package bermuda.main;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class CsvWriterTest {
@@ -8,8 +10,13 @@ public class CsvWriterTest {
 		// hiermit lässt sich irgendwie die Reihenfolge setzen
 		// HeaderColumnNameMappingStrategy<ParameterModel>
 		// headerColumnNameMappingStrategy = new HeaderColumnNameMappingStrategy();
+		CsvEinleser csvEinleser = new CsvEinleser();
+		List<ParameterModel> modelle = csvEinleser.leseParameter("testdatei.csv");
 		CsvWriter csvWriter = new CsvWriter("ergebnisse.csv");
-		// csvWriter.write(new Ergebnis(new ParameterModel(1, 2, 3, 4, 5, 6, 7, 8,
-		// 365)));
+
+		for (ParameterModel parameterModel : modelle) {
+			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel, 0L).berechne();
+			csvWriter.write(ergebnis);
+		}
 	}
 }

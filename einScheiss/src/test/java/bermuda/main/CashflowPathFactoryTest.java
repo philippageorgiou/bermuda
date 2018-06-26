@@ -2,6 +2,7 @@ package bermuda.main;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,17 +15,21 @@ import org.junit.Test;
 public class CashflowPathFactoryTest {
 	private static final long SEED = 10;
 	private GaussianRandomGenerator generator;
+	private ParameterModel aModel;
+	private RandomGenerator randomGenerator;
+	private ArrayList<ShortratePath> shortratePaths;
 
 	@Before
 	public void setUp() {
-		RandomGenerator randomGenerator = RandomGeneratorFactory.createRandomGenerator(new Random(SEED));
+		randomGenerator = RandomGeneratorFactory.createRandomGenerator(new Random(SEED));
+		aModel = ParameterModel.aModel();
 		generator = new GaussianRandomGenerator(randomGenerator);
+		shortratePaths = new ShortratePathFactory(aModel, generator).generateAllPaths();
 	}
 
 	@Test
 	public void generateAllPaths() throws Exception {
-		ParameterModel aModel = ParameterModel.aModel();
-		InterestsPathFactory interestsPathFactory = new InterestsPathFactory(aModel, generator);
+		InterestsPathFactory interestsPathFactory = new InterestsPathFactory(aModel, shortratePaths);
 		List<InterestsPath> paths = interestsPathFactory.generateAllPaths();
 
 		CashflowPathFactory cashflowPathFactory = new CashflowPathFactory(aModel, paths);
@@ -35,22 +40,16 @@ public class CashflowPathFactoryTest {
 
 	}
 
-	private List<CashflowPath> generatePaths(ParameterModel aModel) {
-		InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel, generator);
-		List<InterestsPath> paths = shortrateVasicek.generateAllPaths();
+	@Test
+	public void plotPaths() throws Exception {
+		ParameterModel aModel = ParameterModel.aModel();
+		InterestsPathFactory interestsPathFactory = new InterestsPathFactory(aModel, shortratePaths);
+		List<InterestsPath> paths = interestsPathFactory.generateAllPaths();
 
 		CashflowPathFactory cashflowPathFactory = new CashflowPathFactory(aModel, paths);
 		List<CashflowPath> cashFlowPaths = cashflowPathFactory.generateAllPaths();
 
-		return cashFlowPaths;
-	}
-
-	@Test
-	public void plotPaths() throws Exception {
-		ParameterModel aModel = ParameterModel.aModel();
-		List<CashflowPath> paths = generatePaths(aModel);
-
-		PathPlotter.plotCashFlow(paths);
+		PathPlotter.plotCashFlow(cashFlowPaths);
 	}
 
 }
