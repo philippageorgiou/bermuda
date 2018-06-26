@@ -39,7 +39,6 @@ public class InterestsPathFactoryTest {
 		assertThat(paths).hasSize(aModel.getCountSimulation());
 		assertThat(paths.get(0).getValues()).isEqualTo(new double[] { aModel.getStartShortrate(), 22.012665318695152,
 				73.53026551399789, 242.99540049413446, 744.8050553245859, 2251.33803863817, 6757.597054620673 });
-
 	}
 
 	private List<InterestsPath> generatePaths(ParameterModel aModel) {
