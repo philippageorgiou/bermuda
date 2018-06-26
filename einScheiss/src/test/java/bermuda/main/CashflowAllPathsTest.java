@@ -8,12 +8,10 @@ import org.junit.Test;
 
 public class CashflowAllPathsTest {
 
-	private InterestsAllPaths interestsAllPaths;
-
 	@Test
 	public void getValues() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
-		CashflowAllPaths cashflowAllPaths = new CashflowAllPaths(aModel, interestsAllPaths);
+		CashflowAllPaths cashflowAllPaths = new CashflowAllPaths(aModel,);
 		CashflowPath path = cashflowAllPaths.generatePath();
 		double[] values = path.getValues();
 		assertThat(values).hasSize(aModel.getDurationCallableBond() + 1);
