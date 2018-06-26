@@ -17,6 +17,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 public class CsvWriter {
 
 	private String folder;
+	int i = 1;
 
 	public CsvWriter(String folder) throws IOException {
 		this.folder = folder;
@@ -27,14 +28,15 @@ public class CsvWriter {
 	public void write(Ergebnis ergebnis)
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 
-		writeShortratePaths(ergebnis);
+		// writeShortratePaths(ergebnis);
 		writeInterestsPaths(ergebnis);
 		writeCashflowPaths(ergebnis);
+		i++;
 
 	}
 
 	private void writeInterestsPaths(Ergebnis ergebnis) throws IOException {
-		CSVWriter writer = new CSVWriter(new FileWriter(folder + "\\interestsPaths.csv"));
+		CSVWriter writer = new CSVWriter(new FileWriter(folder + "\\interestsPaths" + i + ".csv"));
 		List<InterestsPath> interestsPaths = ergebnis.getInterestsPaths();
 		for (InterestsPath interestsPath : interestsPaths) {
 			String[] record = interestsPath.getValuesAsStrings();
@@ -44,17 +46,17 @@ public class CsvWriter {
 	}
 
 	private void writeCashflowPaths(Ergebnis ergebnis) throws IOException {
-		CSVWriter writer = new CSVWriter(new FileWriter(folder + "\\cashflowPaths.csv"));
-		List<ShortratePath> shortratePaths = ergebnis.getShortratePaths();
-		for (ShortratePath shortratePath : shortratePaths) {
-			String[] record = shortratePath.getValuesAsStrings();
+		CSVWriter writer = new CSVWriter(new FileWriter(folder + "\\cashflowPaths" + i + ".csv"));
+		List<CashflowPath> cashflowPaths = ergebnis.getCashFlowPaths();
+		for (CashflowPath cashflowPath : cashflowPaths) {
+			String[] record = cashflowPath.getValuesAsStrings();
 			writer.writeNext(record);
 		}
 		writer.close();
 	}
 
 	private void writeShortratePaths(Ergebnis ergebnis) throws IOException {
-		CSVWriter writer = new CSVWriter(new FileWriter(folder + "\\shortratePaths.csv"));
+		CSVWriter writer = new CSVWriter(new FileWriter(folder + "\\shortratePaths" + i + ".csv"));
 		List<ShortratePath> shortratePaths = ergebnis.getShortratePaths();
 		for (ShortratePath shortratePath : shortratePaths) {
 			String[] record = shortratePath.getValuesAsStrings();
