@@ -1,20 +1,20 @@
 package bermuda.main;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MonteCarlo {
 
-	private double[] c;
-	private double valueCallableBond;
 	private ParameterModel aModel;
-	private ArrayList<CashflowPath> cashflowAllPaths;
+	private List<CashflowPath> cashflowAllPaths;
 
-	public MonteCarlo(ParameterModel aModel, ArrayList<CashflowPath> cashflowAllPaths) {
+	public MonteCarlo(ParameterModel aModel, List<CashflowPath> cashflowAllPaths) {
 		this.aModel = aModel;
 		this.cashflowAllPaths = cashflowAllPaths;
 	}
 
-	public double generateValueCallabelBond() {
+	public double generateCallableBond() {
+		double[] c;
+		double valueCallableBond = 0;
 		for (int i = 0; i < aModel.getCountSimulation(); i++) {
 			c = cashflowAllPaths.get(i).getValues();
 			for (int j = 0; j < c.length; j++) {

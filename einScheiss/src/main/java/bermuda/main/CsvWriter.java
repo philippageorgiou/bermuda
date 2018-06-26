@@ -29,7 +29,7 @@ public class CsvWriter {
 					.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withOrderedResults(true).build();
 
 			List<ParameterModel> ergebnisse = new ArrayList<>();
-			ergebnisse.add(ergebnis.getParameterModel());
+			// ergebnisse.add(ergebnis.getParameterModel());
 			beanToCsv.write(ergebnisse);
 		}
 
