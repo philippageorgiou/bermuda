@@ -1,7 +1,6 @@
 package bermuda.main;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.math3.random.GaussianRandomGenerator;
 
@@ -19,8 +18,8 @@ public class InterestsAllPaths {
 		return new InterestsPath(new ShortratePath(aModel, generator));
 	}
 
-	public List<InterestsPath> generateAllPaths() {
-		List<InterestsPath> list = new ArrayList<>();
+	public ArrayList<InterestsPath> generateAllPaths() {
+		ArrayList<InterestsPath> list = new ArrayList<>();
 		for (int i = 0; i < aModel.getCountSimulation(); i++) {
 			list.add(generatePath());
 		}

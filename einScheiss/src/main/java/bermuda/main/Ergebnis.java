@@ -20,5 +20,4 @@ public class Ergebnis {
 	public void setParameterModel(ParameterModel parameterModel) {
 		this.parameterModel = parameterModel;
 	}
-
 }
