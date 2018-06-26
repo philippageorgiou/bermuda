@@ -25,4 +25,12 @@ public class InterestsPath implements ValuePath {
 	public double[] getValues() {
 		return values;
 	}
+
+	public String[] getValuesAsStrings() {
+		String[] val = new String[values.length];
+		for (int i = 0; i < val.length; i++) {
+			val[i] = "" + values[i];
+		}
+		return val;
+	}
 }

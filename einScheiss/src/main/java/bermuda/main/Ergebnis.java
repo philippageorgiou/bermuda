@@ -4,6 +4,22 @@ import java.util.List;
 
 public class Ergebnis {
 
+	public List<ShortratePath> getShortratePaths() {
+		return shortratePaths;
+	}
+
+	public List<InterestsPath> getInterestsPaths() {
+		return interestsPaths;
+	}
+
+	public List<CashflowPath> getCashFlowPaths() {
+		return cashFlowPaths;
+	}
+
+	public double getCallableBond() {
+		return callableBond;
+	}
+
 	private List<ShortratePath> shortratePaths;
 	private List<InterestsPath> interestsPaths;
 	private List<CashflowPath> cashFlowPaths;

@@ -10,9 +10,10 @@ public class CsvWriterTest {
 		// hiermit lässt sich irgendwie die Reihenfolge setzen
 		// HeaderColumnNameMappingStrategy<ParameterModel>
 		// headerColumnNameMappingStrategy = new HeaderColumnNameMappingStrategy();
+
 		CsvEinleser csvEinleser = new CsvEinleser();
 		List<ParameterModel> modelle = csvEinleser.leseParameter("model.csv");
-		CsvWriter csvWriter = new CsvWriter("ergebnisse.csv");
+		CsvWriter csvWriter = new CsvWriter("ausgabe");
 
 		for (ParameterModel parameterModel : modelle) {
 			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel, 0L).berechne();
