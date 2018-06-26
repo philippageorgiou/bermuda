@@ -11,12 +11,19 @@ public class CsvWriterTest {
 		// HeaderColumnNameMappingStrategy<ParameterModel>
 		// headerColumnNameMappingStrategy = new HeaderColumnNameMappingStrategy();
 		CsvEinleser csvEinleser = new CsvEinleser();
-		List<ParameterModel> modelle = csvEinleser.leseParameter("testdatei.csv");
+		List<ParameterModel> modelle = csvEinleser.leseParameter("model.csv");
 		CsvWriter csvWriter = new CsvWriter("ergebnisse.csv");
 
 		for (ParameterModel parameterModel : modelle) {
 			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel, 0L).berechne();
 			csvWriter.write(ergebnis);
 		}
+	}
+
+	@Test
+	public void writeParameterModel() throws Exception {
+		CsvWriter csvWriter = new CsvWriter("model.csv");
+		csvWriter.write(ParameterModel.aModel());
+
 	}
 }

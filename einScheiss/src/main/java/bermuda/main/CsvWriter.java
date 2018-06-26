@@ -30,4 +30,15 @@ public class CsvWriter {
 
 	}
 
+	public void write(ParameterModel parameterModel)
+			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+
+		try (Writer writer = Files.newBufferedWriter(Paths.get(dateiname))) {
+			StatefulBeanToCsv<ParameterModel> beanToCsv = new StatefulBeanToCsvBuilder(writer)
+					.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withOrderedResults(true).build();
+			beanToCsv.write(parameterModel);
+		}
+
+	}
+
 }
