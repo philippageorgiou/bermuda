@@ -2,7 +2,7 @@ package bermuda.main;
 
 import org.apache.commons.math3.random.GaussianRandomGenerator;
 
-public class ShortratePath {
+public class ShortratePath implements ValuePath {
 
 	private ParameterModel aModel;
 	private double[] values;

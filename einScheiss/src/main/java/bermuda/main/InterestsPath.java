@@ -1,6 +1,6 @@
 package bermuda.main;
 
-public class InterestsPath {
+public class InterestsPath implements ValuePath {
 
 	private double[] values;
 
@@ -9,7 +9,7 @@ public class InterestsPath {
 		int yearCount = shortrateValues.length / shortratePath.getScale();
 		double[] y = new double[yearCount + 1];
 		y[0] = 0;
-		for (int j = 1; j < yearCount; j++) {
+		for (int j = 1; j <= yearCount; j++) {
 			int upperBound = j * shortratePath.getScale();
 			for (int k = 1; k < upperBound; k++) {
 				y[j] += shortrateValues[k];

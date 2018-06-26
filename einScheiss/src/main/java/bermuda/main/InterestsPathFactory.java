@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.apache.commons.math3.random.GaussianRandomGenerator;
 
-public class InterestsAllPaths {
+public class InterestsPathFactory {
 
 	private ParameterModel aModel;
 	private GaussianRandomGenerator generator;
 
-	public InterestsAllPaths(ParameterModel aModel, GaussianRandomGenerator generator) {
+	public InterestsPathFactory(ParameterModel aModel, GaussianRandomGenerator generator) {
 		this.aModel = aModel;
 		this.generator = generator;
 	}

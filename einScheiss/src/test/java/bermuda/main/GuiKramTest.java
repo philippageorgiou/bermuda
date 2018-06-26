@@ -64,7 +64,7 @@ public class GuiKramTest {
 	}
 
 	@Test
-	@Ignore
+	// @Ignore
 	public void new3DPlot() throws Exception {
 		JavaPlot p = new JavaPlot();
 		p.newGraph3D();
