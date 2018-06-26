@@ -17,7 +17,7 @@ public class InterestsPath implements ValuePath {
 			y[j] += (shortrateValues[0] + shortrateValues[upperBound]) / 2;
 			y[j] /= (upperBound + 1);
 			y[j] = Math.exp(-y[j]);
-			y[j] = Math.pow(y[j], j) - 1;
+			y[j] = Math.pow(y[j], -j) - 1;
 		}
 		values = y;
 	}
