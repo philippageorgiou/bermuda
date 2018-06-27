@@ -11,12 +11,17 @@ public class ShortratePath implements ValuePath {
 		this.aModel = aModel;
 		int pointCount = aModel.getDurationCallableBond() * aModel.getInterestToShortrateScale();
 		double[] r = new double[pointCount + 1];
-		aModel.getStartShortrate();
+		double[] startShortrate = aModel.getStartShortrate();
 		// r[0] = aModel.getStartShortrate();
-		for (int j = 1; j <= pointCount; j++) {
-			r[j] = aModel.getMeanShortrate() * (aModel.getReversionSpeedShortrate() + r[j - 1])
-					/ aModel.getInterestToShortrateScale()
-					+ Math.pow(aModel.getVolatilityShortrate(), 1 / aModel.getInterestToShortrateScale())
+		for (int j = 0; j <= pointCount; j++) {
+			r[j] = startShortrate[j]
+					+ (Math.pow(aModel.getVolatilityShortrate(), 2) / 2
+							* Math.pow(aModel.getReversionSpeedShortrate(), 2))
+							* (Math.pow(1 - Math.exp((aModel.getReversionSpeedShortrate() * (-j))
+									/ aModel.getInterestToShortrateScale()), 2))
+					+ aModel.getMeanShortrate() * (aModel.getReversionSpeedShortrate() + r[j - 1])
+							/ aModel.getInterestToShortrateScale()
+					+ aModel.getVolatilityShortrate() * Math.sqrt(1 / aModel.getInterestToShortrateScale())
 							* generator.nextNormalizedDouble();
 		}
 		values = r;
