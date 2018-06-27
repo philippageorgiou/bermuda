@@ -118,8 +118,12 @@ public class ParameterModel {
 	}
 
 	public static ParameterModel aModel() {
-		return new ParameterModel(10, 100, new double[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, 0.04, 3, 0.2,
-				5, 0.10, 10000, 360);
+		int interestToShortrateScale2 = 360;
+		int durationCallableBond2 = 5;
+		double[] startShortrates = new double[(1 + durationCallableBond2) * interestToShortrateScale2];
+		Arrays.fill(startShortrates, 1);
+		return new ParameterModel(10, 10, startShortrates, 0.04, 3, 0.2, durationCallableBond2, 0.10, 10000,
+				interestToShortrateScale2);
 	}
 
 	@Override
