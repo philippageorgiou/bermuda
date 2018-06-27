@@ -1,19 +1,24 @@
 package bermuda.main;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 public class Anwendung {
 
-	private static final long SEED = 1L;
-
-	public static void main(String[] args) throws IllegalStateException, FileNotFoundException {
-		String dateiname = args[0];
+	public static void main(String[] args)
+			throws IllegalStateException, IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 		CsvEinleser csvEinleser = new CsvEinleser();
-		List<ParameterModel> modelle = csvEinleser.leseParameter(dateiname);
+		List<ParameterModel> modelle = csvEinleser.leseParameter(args[0]);
+		CsvWriter csvWriter = new CsvWriter(args[1]);
 
-		ErgebnisBerechner ergebnisBerechner = new ErgebnisBerechner(modelle.get(0), SEED);
-		Ergebnis ergebnis = ergebnisBerechner.berechne();
+		for (ParameterModel parameterModel : modelle) {
+			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel).berechne();
+			csvWriter.write(ergebnis);
+		}
+
 	}
 
 }

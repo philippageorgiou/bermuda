@@ -16,7 +16,7 @@ public class CsvWriterTest {
 		CsvWriter csvWriter = new CsvWriter("ausgabe");
 
 		for (ParameterModel parameterModel : modelle) {
-			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel, 0L).berechne();
+			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel).berechne();
 			csvWriter.write(ergebnis);
 		}
 	}

@@ -12,9 +12,10 @@ public class ErgebnisBerechner {
 	private ParameterModel parameterModel;
 	private ShortratePathFactory shortratePathFactory;
 
-	public ErgebnisBerechner(ParameterModel parameterModel, long seed) {
+	public ErgebnisBerechner(ParameterModel parameterModel) {
 		this.parameterModel = parameterModel;
-		RandomGenerator randomGenerator = RandomGeneratorFactory.createRandomGenerator(new Random(seed));
+		RandomGenerator randomGenerator = RandomGeneratorFactory
+				.createRandomGenerator(new Random(parameterModel.getSeedSimulation()));
 		GaussianRandomGenerator generator = new GaussianRandomGenerator(randomGenerator);
 		shortratePathFactory = new ShortratePathFactory(parameterModel, generator);
 	}

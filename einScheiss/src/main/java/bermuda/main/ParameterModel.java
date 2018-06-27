@@ -2,8 +2,6 @@ package bermuda.main;
 
 import com.opencsv.bean.CsvBindByName;
 
-import net.karneim.pojobuilder.GeneratePojoBuilder;
-
 public class ParameterModel {
 
 	public ParameterModel() {
@@ -73,10 +71,18 @@ public class ParameterModel {
 		this.faceValueCallableBond = faceValueCallableBond;
 	}
 
-	@GeneratePojoBuilder(withFactoryMethod = "aModel")
-	public ParameterModel(int countSimulation, double startShortrate, double meanShortrate,
-			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
-			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale) {
+	public long getSeedSimulation() {
+		return seedSimulation;
+	}
+
+	public void setSeedSimulation(long seedSimulation) {
+		this.seedSimulation = seedSimulation;
+	}
+
+	public ParameterModel(long seedSimulation, int countSimulation, double startShortrate,
+			double meanShortrate, double reversionSpeedShortrate, double volatilityShortrate,
+			int durationCallableBond, double couponRateCallableBond, double faceValueCallableBond,
+			int interestToShortrateScale) {
 		this.countSimulation = countSimulation;
 		this.startShortrate = startShortrate;
 		this.meanShortrate = meanShortrate;
@@ -86,7 +92,11 @@ public class ParameterModel {
 		this.couponRateCallableBond = couponRateCallableBond;
 		this.faceValueCallableBond = faceValueCallableBond;
 		this.interestToShortrateScale = interestToShortrateScale;
+		this.seedSimulation = seedSimulation;
 	}
+
+	@CsvBindByName(column = "SEED_SIMULATION")
+	private long seedSimulation;
 
 	@CsvBindByName(column = "COUNT_SIMULATION")
 	private int countSimulation;
@@ -116,7 +126,7 @@ public class ParameterModel {
 	private int interestToShortrateScale;
 
 	public static ParameterModel aModel() {
-		return new ParameterModel(100, 0.02, 0.04, 3, 0.2, 30, 0.10, 10000, 360);
+		return new ParameterModel(10, 100, 0.02, 0.04, 3, 0.2, 30, 0.10, 10000, 360);
 	}
 
 	@Override

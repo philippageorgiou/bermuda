@@ -11,7 +11,7 @@ public class ErgebnisBerechnerTest {
 		CsvEinleser csvEinleser = new CsvEinleser();
 		List<ParameterModel> modelle = csvEinleser.leseParameter("testdatei.csv");
 
-		ErgebnisBerechner ergebnisBerechner = new ErgebnisBerechner(modelle.get(0), 1);
+		ErgebnisBerechner ergebnisBerechner = new ErgebnisBerechner(modelle.get(0));
 		Ergebnis ergebnis = ergebnisBerechner.berechne();
 	}
 
