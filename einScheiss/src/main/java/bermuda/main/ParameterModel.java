@@ -1,5 +1,7 @@
 package bermuda.main;
 
+import java.util.Arrays;
+
 import com.opencsv.bean.CsvBindByName;
 
 public class ParameterModel {
@@ -15,11 +17,11 @@ public class ParameterModel {
 		this.countSimulation = countSimulation;
 	}
 
-	public double getStartShortrate() {
+	public double[] getStartShortrate() {
 		return startShortrate;
 	}
 
-	public void setStartShortrate(double startShortrate) {
+	public void setStartShortrate(double[] startShortrate) {
 		this.startShortrate = startShortrate;
 	}
 
@@ -79,9 +81,10 @@ public class ParameterModel {
 		this.seedSimulation = seedSimulation;
 	}
 
-	public ParameterModel(long seedSimulation, int countSimulation, double startShortrate, double meanShortrate,
+	public ParameterModel(long seedSimulation, int countSimulation, double[] startShortrate, double meanShortrate,
 			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
-			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale) {
+			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale,
+			String fileForStartInteres) {
 		this.countSimulation = countSimulation;
 		this.startShortrate = startShortrate;
 		this.meanShortrate = meanShortrate;
@@ -92,6 +95,7 @@ public class ParameterModel {
 		this.faceValueCallableBond = faceValueCallableBond;
 		this.interestToShortrateScale = interestToShortrateScale;
 		this.seedSimulation = seedSimulation;
+		this.fileForStartInterests = fileForStartInteres;
 	}
 
 	@CsvBindByName(column = "SEED_SIMULATION")
@@ -101,7 +105,7 @@ public class ParameterModel {
 	private int countSimulation;
 
 	@CsvBindByName(column = "START_SHORTRATE")
-	private double startShortrate;
+	private double[] startShortrate;
 
 	@CsvBindByName(column = "MEAN_SHORTRATE")
 	private double meanShortrate;
@@ -124,18 +128,30 @@ public class ParameterModel {
 	@CsvBindByName(column = "INTEREST_TO_SHORTRATE_SCALE")
 	private int interestToShortrateScale;
 
+	@CsvBindByName(column = "FILE_FOR_START_INTERESTS")
+	private String fileForStartInterests;
+
 	public static ParameterModel aModel() {
-		return new ParameterModel(10, 100, 0.02, 0.04, 3, 0.2, 30, 0.10, 10000, 360);
+		return new ParameterModel(10, 100, new double[] { 0 }, 0.04, 3, 0.2, 30, 0.10, 10000, 360, "");
 	}
 
 	@Override
 	public String toString() {
 		return "ParameterModel [seedSimulation=" + seedSimulation + ", countSimulation=" + countSimulation
-				+ ", startShortrate=" + startShortrate + ", meanShortrate=" + meanShortrate
+				+ ", startShortrate=" + Arrays.toString(startShortrate) + ", meanShortrate=" + meanShortrate
 				+ ", reversionSpeedShortrate=" + reversionSpeedShortrate + ", volatilityShortrate="
 				+ volatilityShortrate + ", durationCallableBond=" + durationCallableBond + ", couponRateCallableBond="
 				+ couponRateCallableBond + ", faceValueCallableBond=" + faceValueCallableBond
-				+ ", interestToShortrateScale=" + interestToShortrateScale + "]";
+				+ ", interestToShortrateScale=" + interestToShortrateScale + ", fileForStartInterests="
+				+ fileForStartInterests + "]";
+	}
+
+	public String getFileForStartInterests() {
+		return fileForStartInterests;
+	}
+
+	public void setFileForStartInterests(String fileForStartInteres) {
+		this.fileForStartInterests = fileForStartInteres;
 	}
 
 	public int getInterestToShortrateScale() {
