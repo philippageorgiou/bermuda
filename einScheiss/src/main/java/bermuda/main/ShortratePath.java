@@ -14,17 +14,23 @@ public class ShortratePath implements ValuePath {
 		double[] startShortrate = aModel.getStartShortrate();
 		r[0] = startShortrate[0];
 		for (int j = 1; j <= pointCount; j++) {
-			r[j] = startShortrate[j]
-					+ (Math.pow(aModel.getVolatilityShortrate(), 2) / 2
-							* Math.pow(aModel.getReversionSpeedShortrate(), 2))
-							* (Math.pow(1 - Math.exp((aModel.getReversionSpeedShortrate() * (-j))
-									/ aModel.getInterestToShortrateScale()), 2))
-					+ aModel.getMeanShortrate() * (aModel.getReversionSpeedShortrate() + r[j - 1])
-							/ aModel.getInterestToShortrateScale()
-					+ aModel.getVolatilityShortrate() * Math.sqrt(1 / aModel.getInterestToShortrateScale())
+
+			r[j] = kalibriereStartShortrate(aModel, startShortrate, j)
+					+ aModel.getMeanShortrate() * (aModel.getReversionSpeedShortrate() + r[j - 1]) * timeStep(aModel, 1)
+					+ aModel.getVolatilityShortrate() * Math.sqrt(timeStep(aModel, 1))
 							* generator.nextNormalizedDouble();
 		}
 		values = r;
+	}
+
+	private double kalibriereStartShortrate(ParameterModel aModel, double[] startShortrate, int j) {
+		return startShortrate[j]
+				+ (Math.pow(aModel.getVolatilityShortrate(), 2) / (2 * Math.pow(aModel.getReversionSpeedShortrate(), 2))
+						* Math.pow(1 - Math.exp(aModel.getReversionSpeedShortrate() * timeStep(aModel, -j)), 2));
+	}
+
+	private double timeStep(ParameterModel aModel, int j) {
+		return (j * 1.0) / aModel.getInterestToShortrateScale();
 	}
 
 	public double[] getValues() {
