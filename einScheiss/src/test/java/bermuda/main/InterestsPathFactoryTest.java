@@ -58,7 +58,6 @@ public class InterestsPathFactoryTest {
 	public void plotPaths() throws Exception {
 		ParameterModel aModel = ParameterModel.aModel();
 		List<InterestsPath> paths = generatePaths(aModel);
-
 		PathPlotter.plotInterest(paths);
 	}
 

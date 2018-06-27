@@ -1,6 +1,5 @@
 package bermuda.main;
 
-import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.math3.random.GaussianRandomGenerator;
