@@ -12,7 +12,7 @@ public class Anwendung {
 	public static void main(String[] args) {
 		try {
 			CsvEinleser csvEinleser = new CsvEinleser();
-			List<ParameterModel> modelle = csvEinleser.leseParameter(args[0]);
+			List<ParameterModel> modelle = csvEinleser.leseParameter(args[0], args[1]);
 			CsvWriter csvWriter = new CsvWriter();
 			List<Ergebnis> ergebnisse = new ArrayList();
 			int i = 1;
@@ -28,6 +28,8 @@ public class Anwendung {
 
 		} catch (CsvDataTypeMismatchException | IOException | CsvRequiredFieldEmptyException e) {
 			System.out.println("failed");
+		} catch (Exception e) {
+			System.out.println("wrong data input");
 		}
 	}
 

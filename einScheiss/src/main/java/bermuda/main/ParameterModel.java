@@ -6,8 +6,26 @@ import com.opencsv.bean.CsvBindByName;
 
 public class ParameterModel {
 
-	public ParameterModel() {
-	}
+	@CsvBindByName(column = "SEED_SIMULATION")
+	private long seedSimulation;
+	@CsvBindByName(column = "COUNT_SIMULATION")
+	private int countSimulation;
+	@CsvBindByName(column = "START_SHORTRATE")
+	private double[] startShortrate;
+	@CsvBindByName(column = "MEAN_SHORTRATE")
+	private double meanShortrate;
+	@CsvBindByName(column = "REVERSION_SPEED_SHORTRATE")
+	private double reversionSpeedShortrate;
+	@CsvBindByName(column = "VOLATILITY_SHORTRATE")
+	private double volatilityShortrate;
+	@CsvBindByName(column = "DURATION_CALLABLE_BOND")
+	private int durationCallableBond;
+	@CsvBindByName(column = "COUPON_RATE_CALLABLE_BOND")
+	private double couponRateCallableBond;
+	@CsvBindByName(column = "FACE_VALUE_CALLABLE_BOND")
+	private double faceValueCallableBond;
+	@CsvBindByName(column = "INTEREST_TO_SHORTRATE_SCALE")
+	private int interestToShortrateScale;
 
 	public int getCountSimulation() {
 		return countSimulation;
@@ -81,10 +99,12 @@ public class ParameterModel {
 		this.seedSimulation = seedSimulation;
 	}
 
+	public ParameterModel() {
+	}
+
 	public ParameterModel(long seedSimulation, int countSimulation, double[] startShortrate, double meanShortrate,
 			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
-			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale,
-			String fileForStartInteres) {
+			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale) {
 		this.countSimulation = countSimulation;
 		this.startShortrate = startShortrate;
 		this.meanShortrate = meanShortrate;
@@ -95,44 +115,11 @@ public class ParameterModel {
 		this.faceValueCallableBond = faceValueCallableBond;
 		this.interestToShortrateScale = interestToShortrateScale;
 		this.seedSimulation = seedSimulation;
-		this.fileForStartInterests = fileForStartInteres;
 	}
 
-	@CsvBindByName(column = "SEED_SIMULATION")
-	private long seedSimulation;
-
-	@CsvBindByName(column = "COUNT_SIMULATION")
-	private int countSimulation;
-
-	@CsvBindByName(column = "START_SHORTRATE")
-	private double[] startShortrate;
-
-	@CsvBindByName(column = "MEAN_SHORTRATE")
-	private double meanShortrate;
-
-	@CsvBindByName(column = "REVERSION_SPEED_SHORTRATE")
-	private double reversionSpeedShortrate;
-
-	@CsvBindByName(column = "VOLATILITY_SHORTRATE")
-	private double volatilityShortrate;
-
-	@CsvBindByName(column = "DURATION_CALLABLE_BOND")
-	private int durationCallableBond;
-
-	@CsvBindByName(column = "COUPON_RATE_CALLABLE_BOND")
-	private double couponRateCallableBond;
-
-	@CsvBindByName(column = "FACE_VALUE_CALLABLE_BOND")
-	private double faceValueCallableBond;
-
-	@CsvBindByName(column = "INTEREST_TO_SHORTRATE_SCALE")
-	private int interestToShortrateScale;
-
-	@CsvBindByName(column = "FILE_FOR_START_INTERESTS")
-	private String fileForStartInterests;
-
 	public static ParameterModel aModel() {
-		return new ParameterModel(10, 100, new double[] { 0 }, 0.04, 3, 0.2, 30, 0.10, 10000, 360, "");
+		return new ParameterModel(10, 100, new double[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, 0.04, 3, 0.2,
+				5, 0.10, 10000, 360);
 	}
 
 	@Override
@@ -142,16 +129,7 @@ public class ParameterModel {
 				+ ", reversionSpeedShortrate=" + reversionSpeedShortrate + ", volatilityShortrate="
 				+ volatilityShortrate + ", durationCallableBond=" + durationCallableBond + ", couponRateCallableBond="
 				+ couponRateCallableBond + ", faceValueCallableBond=" + faceValueCallableBond
-				+ ", interestToShortrateScale=" + interestToShortrateScale + ", fileForStartInterests="
-				+ fileForStartInterests + "]";
-	}
-
-	public String getFileForStartInterests() {
-		return fileForStartInterests;
-	}
-
-	public void setFileForStartInterests(String fileForStartInteres) {
-		this.fileForStartInterests = fileForStartInteres;
+				+ ", interestToShortrateScale=" + interestToShortrateScale + "]";
 	}
 
 	public int getInterestToShortrateScale() {
@@ -165,5 +143,4 @@ public class ParameterModel {
 	public boolean isLastYear(int j) {
 		return j == durationCallableBond - 1;
 	}
-
 }

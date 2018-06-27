@@ -12,7 +12,7 @@ public class ErgebnisBerechnerTest {
 	public void berechneDieDreiZahlen() throws Exception {
 
 		CsvEinleser csvEinleser = new CsvEinleser();
-		List<ParameterModel> modelle = csvEinleser.leseParameter("model.csv");
+		List<ParameterModel> modelle = csvEinleser.leseParameter("model.csv", "vektoren.csv");
 
 		ErgebnisBerechner ergebnisBerechner = new ErgebnisBerechner(modelle.get(0));
 		Ergebnis ergebnis = ergebnisBerechner.berechne();
