@@ -1,6 +1,7 @@
 package bermuda.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
@@ -8,17 +9,26 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 public class Anwendung {
 
-	public static void main(String[] args)
-			throws IllegalStateException, IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-		CsvEinleser csvEinleser = new CsvEinleser();
-		List<ParameterModel> modelle = csvEinleser.leseParameter(args[0]);
-		CsvWriter csvWriter = new CsvWriter(args[1]);
+	public static void main(String[] args) {
+		try {
+			CsvEinleser csvEinleser = new CsvEinleser();
+			List<ParameterModel> modelle = csvEinleser.leseParameter(args[0]);
+			CsvWriter csvWriter = new CsvWriter();
+			List<Ergebnis> ergebnisse = new ArrayList();
+			int i = 1;
+			for (ParameterModel parameterModel : modelle) {
+				Ergebnis ergebnis = new ErgebnisBerechner(parameterModel).berechne();
+				ergebnisse.add(ergebnis);
+				csvWriter.write(ergebnis);
+				System.out.println("Model " + i++ + " simulated with valueCallableBond " + ergebnis.getCallableBond());
+			}
+			PathPlotter.plotShortrate(ergebnisse.get(0).getShortratePaths());
+			csvWriter.writeCallableBonds(ergebnisse);
+			System.out.println("successfully written csv files for every ParameterModel");
 
-		for (ParameterModel parameterModel : modelle) {
-			Ergebnis ergebnis = new ErgebnisBerechner(parameterModel).berechne();
-			csvWriter.write(ergebnis);
+		} catch (CsvDataTypeMismatchException | IOException | CsvRequiredFieldEmptyException e) {
+			System.out.println("failed");
 		}
-
 	}
 
 }

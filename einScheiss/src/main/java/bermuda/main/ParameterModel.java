@@ -79,10 +79,9 @@ public class ParameterModel {
 		this.seedSimulation = seedSimulation;
 	}
 
-	public ParameterModel(long seedSimulation, int countSimulation, double startShortrate,
-			double meanShortrate, double reversionSpeedShortrate, double volatilityShortrate,
-			int durationCallableBond, double couponRateCallableBond, double faceValueCallableBond,
-			int interestToShortrateScale) {
+	public ParameterModel(long seedSimulation, int countSimulation, double startShortrate, double meanShortrate,
+			double reversionSpeedShortrate, double volatilityShortrate, int durationCallableBond,
+			double couponRateCallableBond, double faceValueCallableBond, int interestToShortrateScale) {
 		this.countSimulation = countSimulation;
 		this.startShortrate = startShortrate;
 		this.meanShortrate = meanShortrate;
@@ -131,11 +130,12 @@ public class ParameterModel {
 
 	@Override
 	public String toString() {
-		return "ParameterModel [countSimulation=" + countSimulation + ", startShortrate=" + startShortrate
-				+ ", meanShortrate=" + meanShortrate + ", reversionSpeedShortrate=" + reversionSpeedShortrate
-				+ ", volatilityShortrate=" + volatilityShortrate + ", durationCallableBond=" + durationCallableBond
-				+ ", couponRateCallableBond=" + couponRateCallableBond + ", faceValueCallableBond="
-				+ faceValueCallableBond + ", interestToShortrateScale=" + interestToShortrateScale + "]";
+		return "ParameterModel [seedSimulation=" + seedSimulation + ", countSimulation=" + countSimulation
+				+ ", startShortrate=" + startShortrate + ", meanShortrate=" + meanShortrate
+				+ ", reversionSpeedShortrate=" + reversionSpeedShortrate + ", volatilityShortrate="
+				+ volatilityShortrate + ", durationCallableBond=" + durationCallableBond + ", couponRateCallableBond="
+				+ couponRateCallableBond + ", faceValueCallableBond=" + faceValueCallableBond
+				+ ", interestToShortrateScale=" + interestToShortrateScale + "]";
 	}
 
 	public int getInterestToShortrateScale() {

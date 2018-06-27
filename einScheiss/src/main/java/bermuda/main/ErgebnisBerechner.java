@@ -1,11 +1,12 @@
 package bermuda.main;
 
+import static org.apache.commons.math3.random.RandomGeneratorFactory.createRandomGenerator;
+
 import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.math3.random.GaussianRandomGenerator;
 import org.apache.commons.math3.random.RandomGenerator;
-import org.apache.commons.math3.random.RandomGeneratorFactory;
 
 public class ErgebnisBerechner {
 
@@ -14,14 +15,13 @@ public class ErgebnisBerechner {
 
 	public ErgebnisBerechner(ParameterModel parameterModel) {
 		this.parameterModel = parameterModel;
-		RandomGenerator randomGenerator = RandomGeneratorFactory
-				.createRandomGenerator(new Random(parameterModel.getSeedSimulation()));
-		GaussianRandomGenerator generator = new GaussianRandomGenerator(randomGenerator);
-		shortratePathFactory = new ShortratePathFactory(parameterModel, generator);
+		RandomGenerator randomGenerator = createRandomGenerator(new Random(parameterModel.getSeedSimulation()));
+		shortratePathFactory = new ShortratePathFactory(parameterModel, new GaussianRandomGenerator(randomGenerator));
 	}
 
 	public Ergebnis berechne() {
 		List<ShortratePath> shortratePaths = shortratePathFactory.generateAllPaths();
+
 		List<InterestsPath> interestsPaths = new InterestsPathFactory(parameterModel, shortratePaths)
 				.generateAllPaths();
 		List<CashflowPath> cashflowPaths = new CashflowPathFactory(parameterModel, interestsPaths).generateAllPaths();

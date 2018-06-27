@@ -15,8 +15,10 @@ import org.apache.commons.math3.random.CorrelatedRandomVectorGenerator;
 import org.apache.commons.math3.random.GaussianRandomGenerator;
 import org.apache.commons.math3.random.RandomGenerator;
 import org.apache.commons.math3.random.RandomGeneratorFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class MathTest {
 
 	private static final int SD = 1;

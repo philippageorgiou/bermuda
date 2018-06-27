@@ -10,8 +10,10 @@ import org.apache.commons.math3.random.GaussianRandomGenerator;
 import org.apache.commons.math3.random.RandomGenerator;
 import org.apache.commons.math3.random.RandomGeneratorFactory;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class CashflowPathFactoryTest {
 	private static final long SEED = 10;
 	private GaussianRandomGenerator generator;

@@ -12,6 +12,7 @@ import com.panayotis.gnuplot.style.PlotStyle;
 import com.panayotis.gnuplot.style.Style;
 import com.panayotis.gnuplot.utils.Debug;
 
+@Ignore
 public class GuiKramTest {
 	@Test
 	@Ignore
