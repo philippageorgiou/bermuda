@@ -27,7 +27,8 @@ public class CsvWriter {
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 
 		writeShortratePaths(ergebnis);
-		writeInterestsPaths(ergebnis);
+		// tensoren können nicht gut in csv dargestellt werden
+		// writeInterestsPaths(ergebnis);
 		writeCashflowPaths(ergebnis);
 		i++;
 	}
