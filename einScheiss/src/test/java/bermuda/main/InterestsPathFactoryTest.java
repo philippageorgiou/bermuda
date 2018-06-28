@@ -30,16 +30,17 @@ public class InterestsPathFactoryTest {
 		shortratePaths = new ShortratePathFactory(aModel, generator).generateAllPaths();
 	}
 
-	@Test
-	public void getValues() throws Exception {
-		ParameterModel aModel = ParameterModel.aModel();
-		InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel, shortratePaths);
-
-		ValuePath path = shortrateVasicek.generateAllPaths().get(0);
-		double[] values = path.getValues();
-		assertThat(values).hasSize(aModel.getDurationCallableBond() + 1);
-		assertThat(values[0]).isEqualTo(aModel.getStartShortrate());
-	}
+	// @Test
+	// public void getValues() throws Exception {
+	// ParameterModel aModel = ParameterModel.aModel();
+	// InterestsPathFactory shortrateVasicek = new InterestsPathFactory(aModel,
+	// shortratePaths);
+	//
+	// ValuePath path = shortrateVasicek.generateAllPaths().get(0);
+	// double[] values = path.getValues();
+	// assertThat(values).hasSize(aModel.getDurationCallableBond() + 1);
+	// assertThat(values[0]).isEqualTo(aModel.getStartShortrate());
+	// }
 
 	@Test
 	public void generateAllPaths() throws Exception {
@@ -58,11 +59,11 @@ public class InterestsPathFactoryTest {
 		return paths;
 	}
 
-	@Test
-	public void plotPaths() throws Exception {
-		ParameterModel aModel = ParameterModel.aModel();
-		List<InterestsPath> paths = generatePaths(aModel);
-		PathPlotter.plotInterest(paths);
-	}
+	// @Test
+	// public void plotPaths() throws Exception {
+	// ParameterModel aModel = ParameterModel.aModel();
+	// List<InterestsPath> paths = generatePaths(aModel);
+	// PathPlotter.plotInterest(paths);
+	// }
 
 }

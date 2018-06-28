@@ -1,8 +1,9 @@
 package bermuda.main;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-//@Ignore
+@Ignore
 public class AnwendungTest {
 	@Test
 	public void testName() throws Exception {

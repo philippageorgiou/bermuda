@@ -1,28 +1,33 @@
 package bermuda.main;
 
-public class InterestsPath implements ValuePath {
+public class InterestsPath {
 
-	private double[] values;
+	private double[][] values;
 
 	public InterestsPath(ShortratePath shortratePath) {
 		double[] shortrateValues = shortratePath.getValues();
 		int yearCount = shortrateValues.length / shortratePath.getScale();
-		double[] y = new double[yearCount + 1];
-		y[0] = 0;
-		for (int j = 1; j <= yearCount; j++) {
-			int upperBound = j * shortratePath.getScale();
-			for (int k = 1; k < upperBound; k++) {
-				y[j] += shortrateValues[k];
+		double[][] y = new double[yearCount + 1][yearCount + 1];
+		for (int i = 0; i <= yearCount; i++) {
+
+			for (int j = 0; j <= yearCount; j++) {
+				if (j <= i)
+					y[i][j] = 0;
+				int upperBound = j * shortratePath.getScale();
+				int lowerBound = i * shortratePath.getScale();
+				for (int k = lowerBound + 1; k < upperBound; k++) {
+					y[i][j] += shortrateValues[k];
+				}
+				y[i][j] += (shortrateValues[lowerBound] + shortrateValues[upperBound]) / 2;
+				y[i][j] /= ((upperBound - lowerBound) + 1);
+				y[i][j] = Math.exp(-y[j][i]);
+				y[i][j] = Math.pow(y[j][i], -(j - i)) - 1;
 			}
-			y[j] += (shortrateValues[0] + shortrateValues[upperBound]) / 2;
-			y[j] /= (upperBound + 1);
-			y[j] = Math.exp(-y[j]);
-			y[j] = Math.pow(y[j], -j) - 1;
 		}
 		values = y;
 	}
 
-	public double[] getValues() {
+	public double[][] getValues() {
 		return values;
 	}
 

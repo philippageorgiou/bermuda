@@ -4,9 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-//@Ignore
+@Ignore
 public class ErgebnisBerechnerTest {
 	@Test
 	public void berechneDieDreiZahlen() throws Exception {
