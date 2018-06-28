@@ -9,7 +9,7 @@ public class CsvWriterTest {
 	@Test
 	public void writeToCsv() throws Exception {
 		CsvEinleser csvEinleser = new CsvEinleser();
-		List<ParameterModel> modelle = csvEinleser.leseParameter("model2.csv", "vektoren.csv");
+		List<ParameterModel> modelle = csvEinleser.leseParameter("model.csv", "startShortrate.csv");
 		CsvWriter csvWriter = new CsvWriter();
 
 		for (ParameterModel parameterModel : modelle) {
