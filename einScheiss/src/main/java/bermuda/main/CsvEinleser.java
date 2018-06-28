@@ -29,6 +29,17 @@ public class CsvEinleser {
 		if (startShortrates.size() < models.size()) {
 			System.out.println(NOT_ENOUGH_START_SHORTRATE_IN_FILE);
 		}
+		for (int i = 0; i < models.size() - 1; i++) {
+			ParameterModel parameterModel = models.get(i);
+			if (startShortrates.get(i).length < parameterModel.getDurationCallableBond()
+					* parameterModel.getInterestToShortrateScale() + 1) {
+				System.out.println("Not enough values for model " + i + " supplied");
+				System.out.println(startShortrates.get(i).length + " given and "
+						+ parameterModel.getDurationCallableBond() * parameterModel.getInterestToShortrateScale() + 1
+						+ " expected.");
+			}
+		}
+
 	}
 
 	private List<double[]> leseVektoren(String dateiname) throws IOException {
