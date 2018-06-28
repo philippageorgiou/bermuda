@@ -121,8 +121,8 @@ public class ParameterModel {
 		int interestToShortrateScale2 = 360;
 		int durationCallableBond2 = 5;
 		double[] startShortrates = new double[(1 + durationCallableBond2) * interestToShortrateScale2];
-		Arrays.fill(startShortrates, 1);
-		return new ParameterModel(10, 10, startShortrates, 0.04, 3, 0.2, durationCallableBond2, 0.10, 10000,
+		Arrays.fill(startShortrates, 0);
+		return new ParameterModel(10, 1, startShortrates, 0.04, 3, 0.2, durationCallableBond2, 0.10, 10000,
 				interestToShortrateScale2);
 	}
 

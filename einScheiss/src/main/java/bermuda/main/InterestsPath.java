@@ -11,17 +11,20 @@ public class InterestsPath {
 		for (int i = 0; i <= yearCount; i++) {
 
 			for (int j = 0; j <= yearCount; j++) {
-				if (j <= i)
+				if (j <= i) {
 					y[i][j] = 0;
-				int upperBound = j * shortratePath.getScale();
-				int lowerBound = i * shortratePath.getScale();
-				for (int k = lowerBound + 1; k < upperBound; k++) {
-					y[i][j] += shortrateValues[k];
+				} else {
+					int upperBound = j * shortratePath.getScale();
+					int lowerBound = i * shortratePath.getScale();
+					for (int k = lowerBound + 1; k < upperBound; k++) {
+						y[i][j] += shortrateValues[k];
+					}
+					y[i][j] += (shortrateValues[lowerBound] + shortrateValues[upperBound]) / 2;
+					double scale = 1 / ((upperBound * 1.0 - lowerBound * 1.0) + 1);
+					y[i][j] *= scale;
+					y[i][j] = Math.exp(-(y[i][j]));
+					y[i][j] = Math.pow(y[i][j], -(j - i)) - 1;
 				}
-				y[i][j] += (shortrateValues[lowerBound] + shortrateValues[upperBound]) / 2;
-				y[i][j] /= ((upperBound - lowerBound) + 1);
-				y[i][j] = Math.exp(-y[j][i]);
-				y[i][j] = Math.pow(y[j][i], -(j - i)) - 1;
 			}
 		}
 		values = y;
